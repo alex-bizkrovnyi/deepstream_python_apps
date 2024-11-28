@@ -74,6 +74,11 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
             try:
                 # Casting l_obj.data to pyds.NvDsObjectMeta
                 obj_meta=pyds.NvDsObjectMeta.cast(l_obj.data)
+                instance_id = obj_meta.object_id
+                class_id = obj_meta.class_id
+                class_name = obj_meta.obj_label
+
+                print(f"Object ID: {instance_id}, Class ID: {class_id}, Class Name: {class_name}")
             except StopIteration:
                 break
             obj_counter[obj_meta.class_id] += 1
